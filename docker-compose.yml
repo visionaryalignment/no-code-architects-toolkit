@@ -2,7 +2,8 @@ services:
   ncat:
     image: stephengpope/no-code-architects-toolkit:latest
     ports:
-      - "8080:80"  # Use different port since Plesk has 80/443
+      - "8080:8080"  # Use different port since Plesk has 80/443
+    command: gunicorn app:app -b 0.0.0.0:8080
     volumes:
       - storage:/var/www/html/storage/app
       - logs:/var/www/html/storage/logs
