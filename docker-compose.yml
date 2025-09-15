@@ -7,7 +7,21 @@ services:
       - storage:/var/www/html/storage/app
       - logs:/var/www/html/storage/logs
     restart: unless-stopped
-
+    environment:
+     - API_KEY=${API_KEY}
+     - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+     - S3_ACCESS_KEY=${S3_ACCESS_KEY}
+     - S3_SECRET_KEY=${S3_SECRET_KEY}
+     - S3_BUCKET_NAME=${S3_BUCKET_NAME}
+     - S3_REGION=${S3_REGION}
+     - MAX_QUEUE_LENGTH=${MAX_QUEUE_LENGTH}
+     - GUNICORN_WORKERS=${GUNICORN_WORKERS}
+     - GUNICORN_TIMEOUT=${GUNICORN_TIMEOUT}
+     - APP_NAME=${APP_NAME}
+     - APP_DEBUG=${APP_DEBUG}
+     - APP_DOMAIN=${APP_DOMAIN}
+     - APP_URL=${APP_URL}
+     
 volumes:
   storage:
     driver: local
